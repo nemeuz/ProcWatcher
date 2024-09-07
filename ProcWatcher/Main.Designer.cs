@@ -60,6 +60,12 @@
             grpControlPanel = new GroupBox();
             btnStartStop = new Button();
             statusMain = new StatusStrip();
+            ledServiceStatus = new ToolStripStatusLabel();
+            lbServiceStatus = new ToolStripStatusLabel();
+            lbSpring = new ToolStripStatusLabel();
+            lbTriggeredCount = new ToolStripStatusLabel();
+            btnClearLogs = new Button();
+            chkLogAutoScroll = new CheckBox();
             grpProcessName.SuspendLayout();
             grpProcesses.SuspendLayout();
             grpConditions.SuspendLayout();
@@ -67,6 +73,7 @@
             grpActions.SuspendLayout();
             grpMessageLogs.SuspendLayout();
             grpControlPanel.SuspendLayout();
+            statusMain.SuspendLayout();
             SuspendLayout();
             // 
             // grpProcessName
@@ -342,22 +349,24 @@
             // 
             // grpMessageLogs
             // 
+            grpMessageLogs.Controls.Add(chkLogAutoScroll);
+            grpMessageLogs.Controls.Add(btnClearLogs);
             grpMessageLogs.Controls.Add(txtMessageLogs);
-            grpMessageLogs.Location = new Point(8, 428);
+            grpMessageLogs.Location = new Point(13, 428);
             grpMessageLogs.Name = "grpMessageLogs";
-            grpMessageLogs.Size = new Size(814, 160);
+            grpMessageLogs.Size = new Size(812, 181);
             grpMessageLogs.TabIndex = 4;
             grpMessageLogs.TabStop = false;
             grpMessageLogs.Text = "Message Logs:";
             // 
             // txtMessageLogs
             // 
-            txtMessageLogs.Location = new Point(19, 26);
+            txtMessageLogs.Location = new Point(14, 26);
             txtMessageLogs.Multiline = true;
             txtMessageLogs.Name = "txtMessageLogs";
             txtMessageLogs.ReadOnly = true;
             txtMessageLogs.ScrollBars = ScrollBars.Vertical;
-            txtMessageLogs.Size = new Size(780, 119);
+            txtMessageLogs.Size = new Size(783, 111);
             txtMessageLogs.TabIndex = 0;
             // 
             // grpControlPanel
@@ -371,25 +380,71 @@
             // 
             // btnStartStop
             // 
-            btnStartStop.Location = new Point(298, 21);
+            btnStartStop.Location = new Point(307, 21);
             btnStartStop.Name = "btnStartStop";
-            btnStartStop.Size = new Size(127, 31);
+            btnStartStop.Size = new Size(118, 31);
             btnStartStop.TabIndex = 1;
             btnStartStop.Text = "Start Watching";
             btnStartStop.UseVisualStyleBackColor = true;
             // 
             // statusMain
             // 
-            statusMain.Location = new Point(0, 599);
+            statusMain.Items.AddRange(new ToolStripItem[] { ledServiceStatus, lbServiceStatus, lbSpring, lbTriggeredCount });
+            statusMain.Location = new Point(0, 619);
             statusMain.Name = "statusMain";
             statusMain.Size = new Size(839, 22);
             statusMain.SizingGrip = false;
             statusMain.TabIndex = 6;
             // 
+            // ledServiceStatus
+            // 
+            ledServiceStatus.Font = new Font("Segoe UI Symbol", 9F);
+            ledServiceStatus.ForeColor = Color.Silver;
+            ledServiceStatus.Name = "ledServiceStatus";
+            ledServiceStatus.Size = new Size(17, 17);
+            ledServiceStatus.Text = "●";
+            // 
+            // lbServiceStatus
+            // 
+            lbServiceStatus.Name = "lbServiceStatus";
+            lbServiceStatus.Size = new Size(39, 17);
+            lbServiceStatus.Text = "Ready";
+            // 
+            // lbSpring
+            // 
+            lbSpring.Name = "lbSpring";
+            lbSpring.Size = new Size(700, 17);
+            lbSpring.Spring = true;
+            // 
+            // lbTriggeredCount
+            // 
+            lbTriggeredCount.Name = "lbTriggeredCount";
+            lbTriggeredCount.Size = new Size(68, 17);
+            lbTriggeredCount.Text = "Triggered: 0";
+            // 
+            // btnClearLogs
+            // 
+            btnClearLogs.Location = new Point(703, 143);
+            btnClearLogs.Name = "btnClearLogs";
+            btnClearLogs.Size = new Size(91, 31);
+            btnClearLogs.TabIndex = 3;
+            btnClearLogs.Text = "Clear Logs";
+            btnClearLogs.UseVisualStyleBackColor = true;
+            // 
+            // chkLogAutoScroll
+            // 
+            chkLogAutoScroll.AutoSize = true;
+            chkLogAutoScroll.Location = new Point(14, 147);
+            chkLogAutoScroll.Name = "chkLogAutoScroll";
+            chkLogAutoScroll.Size = new Size(89, 23);
+            chkLogAutoScroll.TabIndex = 4;
+            chkLogAutoScroll.Text = "Autoscroll";
+            chkLogAutoScroll.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             AutoScaleMode = AutoScaleMode.None;
-            ClientSize = new Size(839, 621);
+            ClientSize = new Size(839, 641);
             Controls.Add(statusMain);
             Controls.Add(grpControlPanel);
             Controls.Add(grpMessageLogs);
@@ -414,6 +469,8 @@
             grpMessageLogs.ResumeLayout(false);
             grpMessageLogs.PerformLayout();
             grpControlPanel.ResumeLayout(false);
+            statusMain.ResumeLayout(false);
+            statusMain.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -452,5 +509,11 @@
         private Button btnSortB;
         private TextBox txtMessageLogs;
         private StatusStrip statusMain;
+        private ToolStripStatusLabel ledServiceStatus;
+        private ToolStripStatusLabel lbServiceStatus;
+        private ToolStripStatusLabel lbSpring;
+        private ToolStripStatusLabel lbTriggeredCount;
+        private Button btnClearLogs;
+        private CheckBox chkLogAutoScroll;
     }
 }
